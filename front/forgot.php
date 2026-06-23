@@ -2,7 +2,7 @@
     <legend>
         忘記密碼
     </legend>
-    <form action="" method="post">
+
         <table>
             <tr>
                 <td>請輸入信箱以查詢密碼</td>
@@ -16,9 +16,18 @@
             <tr>
                 <td>
                     <div>您的密碼:</div>
-                    <button>尋找</button>
+                    <button onclick="search()">尋找</button>
                 </td>
             </tr>
         </table>
-    </form>
+
 </fieldset>
+<script>
+
+    function search(){
+        let email=$('#email').val();
+        $.get("./api/forgot.php",{email},(result)=>{
+            $("#result").text(result)
+        })
+    }
+</script>

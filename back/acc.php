@@ -1,13 +1,37 @@
-<fieldset style="width:60%;margin:auto;">
-    
-    <legend>
-        會員註冊
+<fieldset>
+    <legend>帳號管理</legend>
+    <form action="./api/edit_acc.php" method="POST">
+        <table class="ct" style="width: 80%;margin:auto">
+            <tr class="clo">
+                <td>帳號</td>
+                <td>密碼</td>
+                <td>刪除</td>
+            </tr>
+            <?php 
+            $mems=$Mem->all();
+            foreach($mems as $mem):
+            ?>
+            <tr>
+                <td><?=$mem['acc'];?></td>
+                <td><?= str_repeat("*",strlen($mem['pw'])); ?></td>
+                <td>
+                    <input type="checkbox" name="del[]" value="<?= $mem['id']; ?>">
+                </td>
+            </tr>
+            <?php endforeach;?>
+        </table>
+        <div class="ct">
+            <input type="submit" value="確定刪除">
+            <input type="reset" value="清空選取">
+        </div>
+    </form>
+    <H2>
+        新增會員
         <div style="color: red;">*請設定您要註冊的帳好及密碼(最長12個字元)</div>
-    </legend>
+    </H2>
    
         <table>
         <tr>
-        
             <td>Step1:登入帳號</td>
             <td><input type="text" name="acc" id="acc" style="width: 100%;"></td>
         </tr>
@@ -25,7 +49,7 @@
         </tr>
         <tr>
             <td>
-                <button type="button" onclick="reg()">註冊</button>
+                <button type="button" onclick="reg()">新增</button>
                 <button type="button" onclick="$('#acc,$pw,,$pw2,#email').val('')">清除</button>
             </td>
             <td></td> </tr>
@@ -35,8 +59,6 @@
             </td> -->
         </tr>
         </table>
-  
-</fieldset>
 <script>
     function reg(){
         let user={
@@ -45,7 +67,7 @@
             'pw2':$("#pw2").val(),
             'email':$("#email").val(),
         }
-        if(user.acc=="" || user.pw==""||user.pw2==""|| user.email==""){
+        if(user.acc=="" || user.pw=="" ||user.pw2=="" || user.email==""){
         alert("不可空白");
         }else if (user.pw !=user.pw2){
             alert("密碼錯誤");
@@ -55,8 +77,9 @@
                     alert("帳號重複");
                 }else{
                     $.post("api/reg.php",user,()=>{
-                        alert("註冊成功，歡迎加入")
-                           location.href='?do=login'
+                        // alert("註冊成功，歡迎加入")
+                        //    location.href='?do=login'
+                        location.reload();
                     })
                 }
             })
@@ -64,3 +87,4 @@
         }
     }
 </script>
+</fieldset>
