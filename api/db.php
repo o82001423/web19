@@ -129,6 +129,7 @@ $Mem=new DB('members');
 $Total=new DB('total');
 $News=new DB('news');
 $Que=new DB("que");
+$Log=new DB("log");
 
 if(!isset($_SESSION['total'])){
     $total=$Total->find(['date'=>date("Y-m-d")]);

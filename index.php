@@ -8,12 +8,27 @@
 <script src="./js/jquery-1.9.1.min.js"></script>
 <script src="./js/js.js"></script>
 </head>
+<style>
+	.alerr{
+	background:rgba(51,51,51,0.8); 
+	color:#FFF; 
+	height:400px;
+	width:400px;
+	position:absolute;
+	display:none;
+	z-index:9999;
+	left: -20px;
+	top: -20px;
+	overflow:auto;
+	}
+	
+
+</style>
 
 <body>
 <div id="alerr" style="background:rgba(51,51,51,0.8); color:#FFF; min-height:100px; width:300px; position:fixed; display:none; z-index:9999; overflow:auto;">
 	<pre id="ssaa"></pre>
 </div>
-<iframe name="back" style="display:none;"></iframe>
 	<div id="all">
     	<div id="title">
         <?= date("m月 d號 l") ?> | 今日瀏覽: <?= $Total->find(['date'=>date("Y-m-d")])['total']; ?> | 累積瀏覽: <?= $Total->q("select sum(`total`) as 'sum' from `total`")[0]['sum'] ;?>       
