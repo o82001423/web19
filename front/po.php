@@ -6,11 +6,11 @@ fieldset {
 </style>
 
 <div>
-    目前位置: 首頁 > 分業網誌 > <span class="nav-item"></span>
+    目前位置: 首頁 > 分類網誌 > <span class="nav-item"></span>
 </div>
 
 <fieldset style="width: 150px;">
-    <legend>分業網誌</legend>
+    <legend>分類網誌</legend>
     <div class="type-item" style="cursor: pointer; color:blue; margin:10px 0">健康新知</div>
     <div class="type-item" style="cursor: pointer; color:blue; margin:10px 0">菸害防治</div>
     <div class="type-item" style="cursor: pointer; color:blue; margin:10px 0">癌症防治</div>

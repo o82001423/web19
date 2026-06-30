@@ -27,7 +27,7 @@
     </form>
     <H2>
         新增會員
-        <div style="color: red;">*請設定您要註冊的帳好及密碼(最長12個字元)</div>
+        <div style="color: red;">*請設定您要註冊的帳號及密碼(最長12個字元)</div>
     </H2>
    
         <table>
@@ -44,7 +44,7 @@
             <td><input type="password" name="pw2" id="pw2" style="width: 100%;"></td>
         </tr>
         <tr>
-            <td>Step4:信箱(忘記密碼使用)</td>
+            <td>Step4:信箱(忘記密碼時使用)</td>
             <td><input type="text" name="email" id="email" style="width: 100%;"></td>
         </tr>
         <tr>

@@ -17,7 +17,7 @@
             <tr>
                 <td>
                     <button type="button" onclick="login()">登入</button>
-                    <button type="rest" onclick="$('#acc,$pw').val('')">清除</button>
+                    <button type="reset" onclick="$('#acc,#$pw').val('')">清除</button>
                 </td>
                 <td>
                     <a href="?do=forgot">忘記密碼</a>
@@ -44,12 +44,12 @@ function login() {
                     }
                 } else {
                     alert("密碼錯誤")
-                    $('#acc,pw').val('')
+                    $('#acc,#pw').val('')
                 }
             })
         } else {
             alert("查無帳號")
-            $('#acc,pw').val('')
+            $('#acc,#pw').val('')
         }
     })
 }

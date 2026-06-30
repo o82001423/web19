@@ -30,7 +30,7 @@
                 $chk=$Log->count(['user'=>$_SESSION['login'],'news'=>$post['id']]);
                
                 if($chk){
-                    echo "回收讚";
+                    echo "收回讚";
                 }else{
                 echo "讚";
                 }
@@ -74,7 +74,7 @@
 
         function good(id){
     $.post("./api/good.php",{id},()=>{
-
+        location.reload();
     })
 }
     </script>

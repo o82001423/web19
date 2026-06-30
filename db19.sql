@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2026-06-23 09:30:08
+-- 產生時間： 2026-06-29 15:22:45
 -- 伺服器版本： 10.4.32-MariaDB
 -- PHP 版本： 8.2.12
 
@@ -20,6 +20,18 @@ SET time_zone = "+00:00";
 --
 -- 資料庫： `db19`
 --
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `data`
+--
+
+CREATE TABLE `data` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `user` varchar(12) NOT NULL,
+  `data` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -43,6 +55,18 @@ INSERT INTO `members` (`id`, `acc`, `pw`, `email`) VALUES
 (2, 'test', '5678', 'test@labor.gov.tw'),
 (3, 'mem01', 'mem01', 'mem01@labor.gov.tw'),
 (9, 'hank', '1234', 'hank@gmail.com');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `logs`
+--
+
+CREATE TABLE `logs` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `user` text NOT NULL,
+  `news` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -120,16 +144,29 @@ CREATE TABLE `total` (
 
 INSERT INTO `total` (`id`, `date`, `total`) VALUES
 (1, '2026-06-23', 4),
-(2, '2026-06-22', 3);
+(2, '2026-06-22', 3),
+(3, '2026-06-29', 1);
 
 --
 -- 已傾印資料表的索引
 --
 
 --
+-- 資料表索引 `data`
+--
+ALTER TABLE `data`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- 資料表索引 `members`
 --
 ALTER TABLE `members`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- 資料表索引 `logs`
+--
+ALTER TABLE `logs`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -155,10 +192,22 @@ ALTER TABLE `total`
 --
 
 --
+-- 使用資料表自動遞增(AUTO_INCREMENT) `data`
+--
+ALTER TABLE `data`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- 使用資料表自動遞增(AUTO_INCREMENT) `members`
 --
 ALTER TABLE `members`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `logs`
+--
+ALTER TABLE `logs`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `news`
@@ -176,7 +225,7 @@ ALTER TABLE `que`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `total`
 --
 ALTER TABLE `total`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

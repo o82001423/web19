@@ -1,5 +1,5 @@
 <fieldset>
-    <legend>目前位置: 首頁 > 最新文章區</legend>
+    <legend>目前位置: 首頁 > 人氣文章區</legend>
 
     <table style="width:95%;margin:auto">
         <tr>
@@ -18,35 +18,54 @@
     foreach($posts as $post):
     ?>
         <tr>
-            <td class="post-title"><?= $post['title'] ?></td>
-            <td style="position: relative">
-                <span><?= mb_substr($post['content'],0,30); ?>...</span>
-                <div class="alerr">
-                    <pre class="ssaa"><?=nl2br($post['content'])?></pre>
+        <td class="post-title"><?= $post['title'] ?></td>
+        <td style="position:relative">
+            <span><?= mb_substr($post['content'],0,30); ?>...</span>
+                <div class="alerr" >
+                    <h3 style='color:lightblue'><?= $post['type'] ?></h3>
+                    <pre class="ssaa"><?= nl2br($post['content']) ?></pre>
                 </div>
-            </td>
-        <td></td>
-        </tr>
-        <?php
+        </td>
+        <td>
+            <span class="good-sum"><?= $post['good']; ?></span>
+            個人說
+            <span class="goods"></span>
+        <?php 
+            if(isset($_SESSION['login'])){
+                echo "<a href='#' onclick='good({$post['id']},this)'>";
+                $chk=$Log->count(['user'=>$_SESSION['login'],'news'=>$post['id']]);
+               
+                if($chk){
+                    echo "收回讚";
+                }else{
+                echo "讚";
+                }
+                echo "</a>";
+            }
+            
+            ?>
+        </td>
+    </tr>
+    <?php
     endforeach;
     ?>
 
-    </table>
-    <div>
+</table>
+<div>
         <?php 
         if($now-1>0){
             $prev=$now-1;
-        echo "<a href='?do=news&p=$prev'> < </a>";
+        echo "<a href='?do=pop&p=$prev'> < </a>";
         }
 
         for($i=1;$i<=$pages;$i++){
             $size=($i==$now)?'24px':'18px';
-        echo "<a href='?do=news&p=$i' style='font-size:$size'> $i </a>";
+        echo "<a href='?do=pop&p=$i' style='font-size:$size'> $i </a>";
 
         }
         if($now+1 <= $pages){
             $next=$now+1;
-        echo "<a href='?do=news&p=$next'> > </a>";
+        echo "<a href='?do=pop&p=$next'> > </a>";
             }
             ?>
 
@@ -56,7 +75,7 @@
 
 <script>
 $(".post-title").hover(
-    function() {
+    function(){
         $(".alerr").hide();
         $(this).next("td").children('.alerr').show();
 
@@ -67,12 +86,29 @@ $(".post-title").hover(
 )
 $(".alerr").hover(
     function() {
-        $(".alerr").show();
+        $(this).show();
     },
     function() {
         $(".alerr").hide();
     }
 
 )
+
+    function good(id,dom){
+        let num=$(dom).parent().find(".good-num").text()*1;
+        $.post("./api/good.php",{id},()=>{
+                // switch($(dom).text){
+                //     case "讚":
+                //        $(dom).parent().find(".good-num").text(num+1)
+                //         $(dom).text("回收讚");
+                //     break;
+                //     case "回收讚":
+                //         $(dom).parent().find(".good-num").text(num-1);
+                //         $(dom).text("回收讚");
+                //     break;
+                // }
+                location.reload();
+    })
+}
 
 </script>

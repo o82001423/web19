@@ -63,7 +63,7 @@ class DB{
                 // 修正：加強空格 " AND "
                 $sql .=" WHERE " .join(" AND ",$tmp);
         }else{
-            $sql .=" WHERE `id`= '$arg'";
+            $sql .=" WHERE `id`='$arg'";
         }
 
         return $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
@@ -74,7 +74,8 @@ class DB{
 
             $tmp=$this->a2s($arg);
             $sql="UPDATE $this->table SET ".join(" , ", $tmp);
-            $sql .=" WHERE `id`= '{$arg['id']}'";
+            $sql .=" WHERE `id`='{$arg['id']}'";
+            
 
         }else{
             $keys=array_keys($arg);
@@ -93,14 +94,14 @@ class DB{
             $sql .=" WHERE " .join(" AND ",$tmp);
         }
         else{
-            $sql .=" WHERE `id`= '$arg'";
+            $sql .=" WHERE `id`='$arg'";
         }
         return $this->pdo->exec($sql);
     }
 
-    protected function a2s($arry){
+    protected function a2s($array){
         $tmp=[];
-        foreach($arry as $key => $val){
+        foreach($array as $key => $val){
             $tmp[]="`$key`='$val'";
         }
         return $tmp;
@@ -129,7 +130,7 @@ $Mem=new DB('members');
 $Total=new DB('total');
 $News=new DB('news');
 $Que=new DB("que");
-$Log=new DB("log");
+$Log=new DB("logs");
 
 if(!isset($_SESSION['total'])){
     $total=$Total->find(['date'=>date("Y-m-d")]);
