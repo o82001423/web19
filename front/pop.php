@@ -8,13 +8,13 @@
             <th style="width: 25%;" class="ct">人氣</th>
         </tr>
         <?php 
-    $total=$News->count(['sh'=>1]);
+    $total=$News->count(['sh'=>1,'del'=>0]);
     $div=5;
     $pages=ceil($total/$div);
     $now=$_GET['p']??1;
     $start=($now-1)*$div;
 
-    $posts=$News->all(['sh'=>1]," order by good desc limit $start,$div");
+    $posts=$News->all(['sh'=>1,'del'=>0]," limit $start,$div");
     foreach($posts as $post):
     ?>
         <tr>
