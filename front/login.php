@@ -2,7 +2,7 @@
 <!-- form:post>table>tr*3>td*2 -->
 
     <legend>
-        會員登入
+        訓練家登入
     </legend>
     <form action="" method="post">
         <table>

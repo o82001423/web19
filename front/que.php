@@ -1,5 +1,5 @@
 <fieldset>
-    <legend>目前位置:首頁 > 問卷調查</legend>
+    <legend>目前位置:首頁 > 對戰投票</legend>
     <table>
         <tr>
             <th style="width:10%">編號</th>

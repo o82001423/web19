@@ -1,8 +1,8 @@
 <fieldset style="width:60%;margin:auto;">
     
     <legend>
-        會員註冊
-        <div style="color: red;">*請設定您要註冊的帳好及密碼(最長12個字元)</div>
+        訓練家註冊
+        <div style="color: red;">*請設定您的帳號與密碼（最長12個字元），加入聯盟對戰！</div>
     </legend>
    
         <table>
